@@ -9,6 +9,7 @@
 var bodyParser = require('body-parser');
 var express = require('express');
 var app = express();
+var util = require('util');
 
 app.set('port', (process.env.PORT || 5000));
 app.listen(app.get('port'));
@@ -33,8 +34,7 @@ app.get(['/facebook', '/instagram'], function(req, res) {
 
 app.post('/facebook', function(req, res) {
   console.log('Facebook request body:');
-  console.log(req.body);
-  // Process the Facebook updates here
+  console.log(util.inspect(req.body, false, null));
   res.sendStatus(200);
 });
 
